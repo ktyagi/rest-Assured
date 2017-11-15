@@ -2,7 +2,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import static io.restassured.RestAssured.*;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
-
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 
@@ -27,7 +28,7 @@ public class PingPongXmlTest {
 			assertThat().
 			statusCode(200).
 			and().
-			assertThat().body("output", org.hamcrest.Matchers.equalTo("PONG"));
+			assertThat().body("output", equalTo("PONG"));
 	}
 	
 	@Test
@@ -43,7 +44,7 @@ public class PingPongXmlTest {
 			assertThat().
 			statusCode(404).
 			and().
-			assertThat().body("output", org.hamcrest.Matchers.not("PONG"));
+			assertThat().body("output", not("PONG"));
 	}
 	
 	public void setupStub() {

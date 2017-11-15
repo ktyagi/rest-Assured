@@ -3,7 +3,8 @@ import org.junit.Test;
 import static io.restassured.RestAssured.*;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.github.tomakehurst.wiremock.stubbing.Scenario;
-
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 
@@ -24,7 +25,7 @@ public class StatefulMockTest {
 			assertThat().
 			statusCode(200).
 			and().
-			assertThat().body("list", org.hamcrest.Matchers.equalTo("Empty"));
+			assertThat().body("list",equalTo("Empty"));
 		
 		given().
 		when().
@@ -40,9 +41,9 @@ public class StatefulMockTest {
 			assertThat().
 			statusCode(200).
 			and().
-			assertThat().body("list", org.hamcrest.Matchers.not("Empty")).
+			assertThat().body("list", not("Empty")).
 			and().
-			assertThat().body("list.item", org.hamcrest.Matchers.equalTo("Item added to list"));
+			assertThat().body("list.item", equalTo("Item added to list"));
 		
 	}
 	

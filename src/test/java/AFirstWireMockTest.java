@@ -1,8 +1,9 @@
+
+import io.restassured.response.Response;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.Assert;
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -43,9 +44,10 @@ public class AFirstWireMockTest {
 	public void testResponseContents() {
 		
 		setupStub();
-		
-//		String response = get("http://localhost:8090/an/endpoint").asString();
-		String response = get("http://localhost:8090/an/endpoint").toString();
+
+		String response = given().
+				when().
+				get("http://localhost:8090/an/endpoint").getBody().asString();
 		Assert.assertEquals(bodyText, response);
 	}
 	
