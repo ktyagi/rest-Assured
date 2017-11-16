@@ -1,21 +1,29 @@
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import io.restassured.response.Response;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.Assert;
+import org.junit.*;
+
 import static io.restassured.RestAssured.*;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
-
+import org.junit.Test;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 
 public class AFirstWireMockTest {
-	
+	private static final int WIREMOCK_PORT = 8090;
 	String bodyText = "You've reached a valid WireMock endpoint";
-	
+
+//	@ClassRule
+//	public static WireMockClassRule wireMockClassRule = new WireMockClassRule(WIREMOCK_PORT);
 	@Rule
-	public WireMockRule wireMockRule = new WireMockRule(8090);
-	
+	public WireMockRule wireMockRule = new WireMockRule(WIREMOCK_PORT);
+
+//	Non-JUnit and general Java usage
+//    WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(WIREMOCK_PORT));
+
+
 	@Test
 	public void testStatusCodePositive() {
 		
