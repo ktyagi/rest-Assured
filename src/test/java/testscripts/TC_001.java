@@ -53,7 +53,7 @@ public class TC_001 {
 		
 	}
 
-	//@Test(dataProvider="getCountryByID")
+	@Test(dataProvider="getCountryByID")
 	public void verifyGetCountryById(Integer id, Integer popu, String country){
 		Gson gson = new GsonBuilder().create();
 		GetCountries getCountries;

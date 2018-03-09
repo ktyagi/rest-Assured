@@ -12,7 +12,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 
 public class AFirstWireMockTest {
-	private static final int WIREMOCK_PORT = 8090;
+	private static final int WIREMOCK_PORT = 9090;
 	String bodyText = "You've reached a valid WireMock endpoint";
 
 //	@ClassRule
@@ -31,7 +31,7 @@ public class AFirstWireMockTest {
 		
 		given().
 		when().
-			get("http://localhost:8090/an/endpoint").
+			get("http://localhost:9090/an/endpoint").
 		then().
 			assertThat().statusCode(200);
 	}
@@ -43,7 +43,7 @@ public class AFirstWireMockTest {
 		
 		given().
 		when().
-			get("http://localhost:8090/another/endpoint").
+			get("http://localhost:9090/another/endpoint").
 		then().
 			assertThat().statusCode(404);
 	}
@@ -55,7 +55,7 @@ public class AFirstWireMockTest {
 
 		String response = given().
 				when().
-				get("http://localhost:8090/an/endpoint").getBody().asString();
+				get("http://localhost:9090/an/endpoint").getBody().asString();
 		Assert.assertEquals(bodyText, response);
 	}
 	

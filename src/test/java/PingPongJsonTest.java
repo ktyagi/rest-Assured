@@ -15,7 +15,7 @@ public class PingPongJsonTest {
     String faultMessage = "\"input\":PONG";
 		
 	@Rule
-	public WireMockRule wireMockRule = new WireMockRule(8090);
+	public WireMockRule wireMockRule = new WireMockRule(8080);
 	
 	@Test
 	public void testPingPongPositive() {
