@@ -24,7 +24,7 @@ public class Webservices {
 	
 	public static Response Get(String uRI){
 		RequestSpecification requestSpecification = RestAssured.given();
-		requestSpecification.contentType(ContentType.JSON);
+//		requestSpecification.contentType(ContentType.XML);
 		Response response = requestSpecification.get(uRI);
 		return response;
 	}
